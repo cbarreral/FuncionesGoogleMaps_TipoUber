@@ -36,26 +36,18 @@
                 <!--Geolocalizacion-->
                 <div class="col-md-3">
                     <br />
-                    <p>Ubicación Actual</p>
-                    <br />
-                    <asp:Label Text="Geolocalización " runat="server" />
-                    <asp:TextBox ID="Lat" CssClass="form-control" value="20.218280999999998" runat="server"></asp:TextBox> 
-                    <asp:TextBox ID="Lng" CssClass="form-control" value="-99.24503140000002" runat="server"></asp:TextBox>
-               <asp:TextBox ID="txtRadio" CssClass="form-control" value="50" runat="server"></asp:TextBox>
-                <!--Botones-->
-                     <br />
-                     <div class=" form-group-sm">
-                         <asp:Button ID="btnAceptar" runat="server" UseSubmitBehavior="false"  Text="Aceptar" class="btn btn-warning" OnClick="btn_Geo_Click"/> 
-                         <br />
-                         <br />
+                    <asp:Label Text="Cordenadas " runat="server" />
+                    <asp:TextBox ID="Lat" CssClass="form-control" Text="20.218280999999998" runat="server"></asp:TextBox> 
+                    <asp:TextBox ID="Lng" CssClass="form-control" Text="-99.24503140000002" runat="server"></asp:TextBox>
+               <asp:TextBox ID="txtRadio" CssClass="form-control" Text="50" runat="server"></asp:TextBox>
+               
                          
-                     </div>
                 </div>
             </div>
         </div>
     </form>
     <script>
-        
+        var ubi;
         window.onload = function () {
             var marker;
             const MyLatLon = { lat: -34.397, lng: 150.644 };//Posicion como ejemplo
@@ -69,7 +61,7 @@
             //Optener mi ubicacion actual
             navigator.geolocation.getCurrentPosition(function (position) {
                 var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-               // document.getElementById('<%=Lat.ClientID%>').value = geolocate.lat();
+               // document.getElementById('<%=Lat.ClientID%>').value = geolocate.lat();     
                // document.getElementById('<%=Lng.ClientID%>').value = geolocate.lng();
 
               
@@ -77,11 +69,8 @@
             });
             var longi = document.getElementById('<%=Lng.ClientID%>').value;
                 var lati = document.getElementById('<%=Lat.ClientID%>').value;
-                var ubi = new google.maps.LatLng(lati, longi);
+                 ubi = new google.maps.LatLng(lati, longi);
 
-                console.log("ubi: " + ubi);
-                document.getElementById('<%=Lat.ClientID%>').value = ubi.lat();
-                document.getElementById('<%=Lng.ClientID%>').value = ubi.lng();
                //Propiedades del Marcador
                 marker = new google.maps.Marker({
                     position: ubi,
@@ -93,9 +82,11 @@
                     title: 'Radio',
 
                 });
+          
               map.setCenter(ubi);
-                
-             //Resibe la distacias del radio desde C#   
+            document.getElementById('<%=Lat.ClientID%>').value = ubi.lat();
+            document.getElementById('<%=Lng.ClientID%>').value = ubi.lng();
+             //Resibe la distacia del radio desde C#   
             var radio = parseInt(document.getElementById('<%=txtRadio.ClientID%>').value);
                
             // Add circle overlay and bind to marker
@@ -106,7 +97,7 @@
             });
               
                 circle.bindTo('center', marker, 'position');
-               document.getElementById('<%=txtRadio.ClientID%>').value = circle.radius;
+            document.getElementById('<%=txtRadio.ClientID%>').value = circle.radius;
                 //Dibujar en Mapa
             const drawingManager = new google.maps.drawing.DrawingManager({
                 drawingMode: google.maps.drawing.OverlayType.MARKER,

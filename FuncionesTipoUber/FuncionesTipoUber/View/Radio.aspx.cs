@@ -13,30 +13,29 @@ namespace FuncionesTipoUber.View
         Radio_Datos radio_;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
+            SetDatos();
+            GetDatosCordenadas();
         }
 
         public Radio_Datos GetDatosCordenadas()
         {
             radio_ = new Radio_Datos();
-          //  radio_.Geolocalizacion = txtGeo.Text;
-            radio_.CorLat = (19.4199042).ToString();
-            radio_.CorLng = (-99.169275).ToString();
-            radio_.Radio = (50).ToString();
+
+            radio_.CorLat = Lat.Text;
+            radio_.CorLng = Lng.Text;
+            radio_.Radio = txtRadio.Text;
             return radio_;
         }
         public void SetDatos()
-        {GetDatosCordenadas();
-            radio_ = new Radio_Datos();
-            txtRadio.Text = radio_.Radio;
-            Lat.Text = radio_.CorLat;
-            Lng.Text = radio_.CorLng;
+        {
+
+            txtRadio.Text = (500).ToString();
+            Lat.Text = (19.4199042).ToString();
+            Lng.Text = (-99.169275).ToString();
         }
 
-        protected void btn_Geo_Click(object sender, EventArgs e)
-        {
-            SetDatos();
-        }
+        
 
         protected void btn_Cordenadas_Click(object sender, EventArgs e)
         {
@@ -44,5 +43,6 @@ namespace FuncionesTipoUber.View
             string script = string.Format("Alerta('{0}','{1}');", n.CorLat,n.CorLng);
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", script, true);*/
         }
+
     }
 }
