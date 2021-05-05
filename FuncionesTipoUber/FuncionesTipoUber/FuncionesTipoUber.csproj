@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -78,8 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AB_Funciones.cs" />
-    <Compile Include="Controller\Radio_Funciones.cs" />
-    <Compile Include="Controller\RotarMarcador_Funcion.cs" />
+    <Compile Include="Controller\UbicacionActual.cs" />
+    <Compile Include="Model\CLocation.cs" />
     <Compile Include="Model\RotarMarcador_Datos.cs" />
     <Compile Include="Model\Radio_Datos.cs" />
     <Compile Include="Model\AB_Datos.cs" />
