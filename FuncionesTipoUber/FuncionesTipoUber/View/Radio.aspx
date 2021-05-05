@@ -11,8 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
-
-
     <link href="css/style.css" rel="stylesheet" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- API_KEY Google Maps -->
@@ -61,11 +59,7 @@
             //Optener mi ubicacion actual
             navigator.geolocation.getCurrentPosition(function (position) {
                 var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-               // document.getElementById('<%=Lat.ClientID%>').value = geolocate.lat();     
-               // document.getElementById('<%=Lng.ClientID%>').value = geolocate.lng();
-
-              
-           
+               
             });
             var longi = document.getElementById('<%=Lng.ClientID%>').value;
                 var lati = document.getElementById('<%=Lat.ClientID%>').value;

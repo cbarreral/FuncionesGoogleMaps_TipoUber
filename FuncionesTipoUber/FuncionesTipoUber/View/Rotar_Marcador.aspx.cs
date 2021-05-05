@@ -13,15 +13,15 @@ namespace FuncionesTipoUber
         RotarMarcador_Datos datos;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var n = GetDatos();
-            string script = string.Format("setRotation('{0}');", n.Grados);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", script, true);
-
+          var n = GetDatos();
+            // string script = string.Format("setRotation('{0}');", (120).ToString());
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", script, true);
+            txtGrado.Value =n.Grados;
         }
         public RotarMarcador_Datos GetDatos()
         {
             datos = new RotarMarcador_Datos();
-            datos.Grados = txtGrados.Text;
+            datos.Grados = (120).ToString();
             return datos;
         }
     }
