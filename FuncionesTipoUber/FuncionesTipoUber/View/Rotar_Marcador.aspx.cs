@@ -2,12 +2,10 @@
 using FuncionesTipoUber.Model;
 using System;
 using System.Collections.Generic;
-using System.Device.Location;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
 
 namespace FuncionesTipoUber
 {
@@ -21,18 +19,7 @@ namespace FuncionesTipoUber
             // string script = string.Format("setRotation('{0}');", (120).ToString());
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", script, true);
             txtGrado.Value =n.Grados;
-
-
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-
-            // Do not suppress prompt, and wait 1000 milliseconds to start.
-            watcher.PositionChanged += (S, E) =>
-            {
-                var oCoordinate = E.Position.Location;
-                Console.WriteLine("Lat del dispositivo desde c#: " + oCoordinate.Latitude.ToString());
-                Console.WriteLine("Lng del dispositivo desde c#: " + oCoordinate.Longitude.ToString());
-            };
-            watcher.Start();
+          
 
 
         }
